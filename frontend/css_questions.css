@@ -1,0 +1,53 @@
+body {
+  background-image: url('fond_parchemin.png');    
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0px;
+}
+.boutons {
+  position: relative;
+  top: 170px; 
+  left: 70px;
+  width: 1200px;
+}
+.bouton {
+  position: relative;
+  width: 340px;
+  height: 150px;
+  margin: 25px;
+  background: #6F5643;
+  border-radius: 16.7093px;
+}
+.réponses {
+  text-align: start;
+  position: relative;
+}
+.traces {
+  position:relative;
+  float:right;
+  height: 10%;
+  width: 10%;
+}
+.banderolles {
+  position:relative;
+  float:left;
+  height: 20%;
+  width: 20%;
+}
+.choixpeau {
+  height: 20%;
+  width: 20%;
+  position: relative;
+  left: 20%;
+  margin-top: 20px;
+}
+.zone_question {
+  position: relative;
+  width: 500px;
+  height: auto;
+  top: -150px;
+  left: 400px;
+  font-size: 50px;
+  text-align: center;
+}
