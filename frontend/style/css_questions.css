@@ -8,22 +8,18 @@ body {
 .boutons-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   top: 170px; 
   left: 70px;
   width: 1200px;
 }
 .bouton {
-  position: relative;
   width: 340px;
   height: 150px;
   margin: 25px;
   background: #6F5643;
-  border-radius: 16.7093px;
-}
-.rÃ©ponses {
-  text-align: start;
-  position: relative;
+  border-radius: 10px;
 }
 .traces {
   position:relative;
@@ -42,7 +38,7 @@ body {
   width: 20%;
   position: relative;
   left: 20%;
-  margin-top: 20px;
+  margin-top: 1.25em;
 }
 .zone_question {
   position: relative;
