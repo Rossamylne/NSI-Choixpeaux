@@ -7,16 +7,17 @@ body {
 }
 .boutons-container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content:space-around;
   align-items: center;
-  top: 170px; 
-  left: 70px;
-  width: 1200px;
+  flex-wrap: wrap;
+  max-width: 75em;
+  margin: auto;
+  border: 3px solid black;
 }
 .bouton {
-  width: 340px;
-  height: 150px;
+  min-width: 21.25em;
+  height: 9.37em;
   margin: 25px;
   background: #6F5643;
   border-radius: 10px;
@@ -40,11 +41,10 @@ body {
   left: 20%;
   margin-top: 1.25em;
 }
-.zone_question {
-  position: relative;
-  width: 500px;
+.zone-question {
+  position: absolute;
+  width: 31.25em;
   height: auto;
-  top: -150px;
   left: 400px;
   font-size: 50px;
   text-align: center;

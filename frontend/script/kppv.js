@@ -108,85 +108,111 @@ function results_creation(tab) {
 let currentQuestion = 0;
 let tosend = [0, 0, 0, 0];
 let questions = {
-    "Avez vous peur du noir ?": [{
-            Oui: [0, 0, 0, 0]
+    "Êtes-vous plutôt du genre à prendre des risques ou à éviter les situations risquées ?": [{
+            "Je suis plutôt prudent(e)": [1, 0, 2, 3]
         },
         {
-            Non: [0, 1, 2, 3]
+            "Je suis prêt(e) à prendre des risques si nécessaire": [2, 2, 1, 1]
         },
         {
-            "Peut être": [0, 1, 2, 3]
-        },
-        {
-            "Je ne sais pas": [0, 1, 2, 3]
+            "Je suis intrépide, j'aime les défis !": [3, 3, 1, 0]
         },
     ],
-    "Avez vous peur des araignées ?": [{
-            Oui: [0, 0, 0, 0]
+
+    "Aimez-vous être en charge d'une équipe ou préférez-vous travailler seul(e) ?": [{
+            "Je préfère travailler seul(e)": [0, 0, 2, 1]
         },
         {
-            Non: [0, 1, 2, 3]
+            "J'aime être en charge, mais je peux travailler en équipe": [1, 2, 1, 2]
         },
         {
-            "Peut être": [0, 1, 2, 3]
-        },
-        {
-            "Je ne sais pas": [0, 1, 2, 3]
+            "J'adore être en charge d'une équipe !": [2, 3, 0, 2]
         },
     ],
-    "Avez vous peur des chiens ?": [{
-            Oui: [0, 0, 0, 1]
+
+    "Préférez-vous résoudre des problèmes complexes ou accomplir des tâches simples et répétitives ?": [{
+            "J'aime les tâches simples et répétitives": [0, 0, 1, 2]
         },
         {
-            Non: [0, 1, 2, 3]
+            "J'aime résoudre des problèmes, mais je préfère quand ils ne sont pas trop complexes": [1, 1, 2, 1]
         },
         {
-            "Peut être": [0, 1, 2, 3]
-        },
-        {
-            "Je ne sais pas": [0, 1, 2, 3]
+            "Je suis à l'aise avec les problèmes complexes, j'adore les défis !": [3, 3, 3, 0]
         },
     ],
-    "Avez vous peur des serpents ?": [{
-            Oui: [0, 1, 0, 0]
+
+    "Êtes-vous plutôt introverti(e) ou extraverti(e) ?": [{
+            "Je suis plutôt introverti(e)": [1, 1, 2, 2]
         },
         {
-            Non: [0, 1, 0, 0]
+            "Je suis plutôt extraverti(e)": [2, 2, 1, 1]
         },
         {
-            "Peut être": [0, 1, 0, 0]
-        },
-        {
-            "Je ne sais pas": [0, 1, 2, 3]
+            "Je suis un(e) ambiverti(e), j'ai un bon équilibre entre les deux": [1, 2, 2, 1]
         },
     ],
-    "Avez vous peur des souris ?": [{
-            Oui: [0, 1, 2, 3]
+
+    "Aimez-vous aider les autres ou préférez-vous vous concentrer sur vos propres objectifs ?": [{
+            "Je préfère me concentrer sur mes propres objectifs": [0, 2, 1, 0]
         },
         {
-            Non: [0, 1, 2, 3]
+            "J'aime aider les autres, mais je ne veux pas être en charge de leur réussite": [1, 1, 3, 2]
         },
         {
-            "Peut être": [0, 1, 2, 3]
-        },
-        {
-            "Je ne sais pas": [0, 1, 2, 3]
+            "J'aime aider les autres et je veux être en charge de leur réussite !": [2, 3, 2, 3]
         },
     ],
-    "Avez vous peur des chats ?": [{
-            Oui: [0, 1, 2, 3]
-        },
-        {
-            Non: [0, 1, 2, 3]
-        },
-        {
-            "Peut être": [0, 1, 2, 3]
-        },
-        {
-            "Je ne sais pas": [0, 1, 2, 3]
-        },
+    "Êtes-vous prêt à prendre des risques pour atteindre vos objectifs ?": [{
+        "Oui": [3, 2, 0, 1]
+    },
+    {
+        "Non": [1, 0, 2, 3]
+    },
+    {
+        "Ça dépend": [2, 3, 1, 0]
+    }
     ],
-};
+    "Avez-vous tendance à prendre des décisions rapides ou à réfléchir longuement avant de prendre une décision ?": [{
+            "Je prends des décisions rapides": [3, 1, 2, 0]
+        },
+        {
+            "Je réfléchis longuement avant de prendre une décision": [0, 2, 1, 3]
+        },
+        {
+            "Ça dépend de la situation": [2, 3, 0, 1]
+        }
+    ],
+    "Avez-vous tendance à être honnête, même si cela signifie être impopulaire ?": [{
+            "Oui": [3, 2, 1, 0]
+        },
+        {
+            "Non": [0, 1, 2, 3]
+        },
+        {
+            "Ça dépend": [2, 1, 3, 0]
+        }
+    ],
+    "Êtes-vous une personne plutôt introvertie ou extravertie ?": [{
+            "Introverti": [1, 2, 0, 3]
+        },
+        {
+            "Extraverti": [3, 0, 2, 1]
+        },
+        {
+            "Un mélange des deux": [2, 1, 3, 0]
+        }
+    ],
+    "Préférez-vous travailler seul ou en équipe ?": [{
+            "Seul": [1, 0, 3, 2]
+        },
+        {
+            "En équipe": [2, 3, 1, 0]
+        },
+        {
+            "Ça dépend de la tâche à accomplir": [3, 1, 2, 0]
+        }
+    ]
+}
 
 const questionEl = document.getElementById("question");
 const buttons = document.querySelectorAll(".boutons-container button");
