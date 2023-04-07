@@ -96,7 +96,6 @@ function results_creation(tab) {
     for (let i = 0; i < tab.length; i++) {
         results[tab[i]['Name']] = tab[i]['House'];
     }
-    console.log(results)
     return results;
 }
 function refresh() {
@@ -106,38 +105,38 @@ function refresh() {
 
 
 let currentQuestion = 0;
-let tosend = [4, 4, 4, 4];
+let tosend = [2, 2, 2, 2];
 let questions = {
     "Êtes-vous plutôt du genre à prendre des risques ou à éviter les situations risquées ?": [{
-            "Je suis plutôt prudent(e)": [0, 0, 1, 0]
+            "Je suis plutôt prudent(e)": [0, 0, 2, 0]
         },
         {
             "Je suis prêt(e) à prendre des risques si nécessaire": [0, 0, 0, 0]
         },
         {
-            "Je suis intrépide, j'aime les défis !": [1, 0, 0, 0]
+            "Je suis intrépide, j'aime les défis !": [2, 0, 0, 0]
         },
     ],
 
     "Aimez-vous être en charge d'une équipe ou préférez-vous travailler seul(e) ?": [{
-            "Je préfère travailler seul(e)": [0, 1, 0, 0]
+            "Je préfère travailler seul(e)": [0, 2, 0, 0]
         },
         {
             "J'aime être en charge, mais je peux travailler en équipe": [0, 0, 0, 0]
         },
         {
-            "J'adore être en charge d'une équipe !": [0, 0, 0, 1]
+            "J'adore être en charge d'une équipe !": [1, 0, 0, 2]
         },
     ],
 
     "Préférez-vous résoudre des problèmes complexes ou accomplir des tâches simples et répétitives ?": [{
-            "J'aime les tâches simples et répétitives": [1, 0, 0, 0]
+            "J'aime les tâches simples et répétitives": [2, 0, 0, 0]
         },
         {
             "J'aime résoudre des problèmes, mais je préfère quand ils ne sont pas trop complexes": [0, 0, 0, 0]
         },
         {
-            "Je suis à l'aise avec les problèmes complexes, j'adore les défis !": [0, 0, 1, 0]
+            "Je suis à l'aise avec les problèmes complexes, j'adore les défis !": [0, 0, 2, 0]
         },
     ],
 
@@ -145,7 +144,7 @@ let questions = {
             "Je suis plutôt introverti(e)": [0, 0, 0, 0]
         },
         {
-            "Je suis plutôt extraverti(e)": [0, 0, 0, 2]
+            "Je suis plutôt extraverti(e)": [0, 0, 0, 3]
         },
         {
             "Je suis un(e) ambiverti(e), j'ai un bon équilibre entre les deux": [0, 0, 0, 1]
@@ -153,10 +152,10 @@ let questions = {
     ],
 
     "Aimez-vous aider les autres ou préférez-vous vous concentrer sur vos propres objectifs ?": [{
-            "Je préfère me concentrer sur mes propres objectifs": [0, 1, 0, 0]
+            "Je préfère me concentrer sur mes propres objectifs": [0, 2, 0, 0]
         },
         {
-            "J'aime aider les autres, mais je ne veux pas être en charge de leur réussite": [0, 0, 1, 1]
+            "J'aime aider les autres, mais je ne veux pas être en charge de leur réussite": [0, 0, 1, 2]
         },
         {
             "J'aime aider les autres et je veux être en charge de leur réussite !": [0, 1, 0, 1]
@@ -169,7 +168,7 @@ let questions = {
         "Non": [0, 0, 0, 0]
     },
     {
-        "Ça dépend": [1, 0, 1, 0]
+        "Ça dépend": [1, 0, 2, 0]
     }
     ],
     "Avez-vous tendance à prendre des décisions rapides ou à réfléchir longuement avant de prendre une décision ?": [{
@@ -247,7 +246,7 @@ buttons.forEach((button, index) => {
                 'Intelligence': tosend[2],
                 'Good': tosend[3]
             });
-            alert(`Vous êtes de le maison ${final_result[0]} !`);
+            document.getElementById('house').innerHTML = final_result[0];
         }
     });
 });
