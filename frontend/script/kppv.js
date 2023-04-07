@@ -81,17 +81,11 @@ function best_house(tab) {
     return top_house;
 }
 
-function profile_creation(base) {
-    for (let caracteristics in base) {
-        base[caracteristics] = parseInt(prompt(`${caracteristics} : `));
-    }
-    return base;
-}
 
 function execution(profile_type) {
     let characters = ajout_distance(personnage, profile_type);
     let k = 5;
-    let voisins = personnage.sort(function(a, b) {
+    let voisins = characters.sort(function(a, b) {
         return a['Distance'] - b['Distance'];
     });
     return [best_house(voisins.slice(0, k)), voisins.slice(0, k)];
@@ -106,110 +100,110 @@ function results_creation(tab) {
 }
 
 let currentQuestion = 0;
-let tosend = [0, 0, 0, 0];
+let tosend = [1, 1, 1, 1];
 let questions = {
     "Êtes-vous plutôt du genre à prendre des risques ou à éviter les situations risquées ?": [{
-            "Je suis plutôt prudent(e)": [1, 0, 2, 3]
+            "Je suis plutôt prudent(e)": [0, 0, 1, 0]
         },
         {
-            "Je suis prêt(e) à prendre des risques si nécessaire": [2, 2, 1, 1]
+            "Je suis prêt(e) à prendre des risques si nécessaire": [0, 0, 0, 0]
         },
         {
-            "Je suis intrépide, j'aime les défis !": [3, 3, 1, 0]
+            "Je suis intrépide, j'aime les défis !": [1, 0, 0, 0]
         },
     ],
 
     "Aimez-vous être en charge d'une équipe ou préférez-vous travailler seul(e) ?": [{
-            "Je préfère travailler seul(e)": [0, 0, 2, 1]
+            "Je préfère travailler seul(e)": [0, 1, 0, 0]
         },
         {
-            "J'aime être en charge, mais je peux travailler en équipe": [1, 2, 1, 2]
+            "J'aime être en charge, mais je peux travailler en équipe": [0, 0, 0, 0]
         },
         {
-            "J'adore être en charge d'une équipe !": [2, 3, 0, 2]
+            "J'adore être en charge d'une équipe !": [0, 0, 0, 1]
         },
     ],
 
     "Préférez-vous résoudre des problèmes complexes ou accomplir des tâches simples et répétitives ?": [{
-            "J'aime les tâches simples et répétitives": [0, 0, 1, 2]
+            "J'aime les tâches simples et répétitives": [1, 0, 0, 0]
         },
         {
-            "J'aime résoudre des problèmes, mais je préfère quand ils ne sont pas trop complexes": [1, 1, 2, 1]
+            "J'aime résoudre des problèmes, mais je préfère quand ils ne sont pas trop complexes": [0, 0, 0, 0]
         },
         {
-            "Je suis à l'aise avec les problèmes complexes, j'adore les défis !": [3, 3, 3, 0]
+            "Je suis à l'aise avec les problèmes complexes, j'adore les défis !": [0, 0, 1, 0]
         },
     ],
 
     "Êtes-vous plutôt introverti(e) ou extraverti(e) ?": [{
-            "Je suis plutôt introverti(e)": [1, 1, 2, 2]
+            "Je suis plutôt introverti(e)": [0, 0, 0, 0]
         },
         {
-            "Je suis plutôt extraverti(e)": [2, 2, 1, 1]
+            "Je suis plutôt extraverti(e)": [0, 0, 0, 2]
         },
         {
-            "Je suis un(e) ambiverti(e), j'ai un bon équilibre entre les deux": [1, 2, 2, 1]
+            "Je suis un(e) ambiverti(e), j'ai un bon équilibre entre les deux": [0, 0, 0, 1]
         },
     ],
 
     "Aimez-vous aider les autres ou préférez-vous vous concentrer sur vos propres objectifs ?": [{
-            "Je préfère me concentrer sur mes propres objectifs": [0, 2, 1, 0]
+            "Je préfère me concentrer sur mes propres objectifs": [0, 1, 0, 0]
         },
         {
-            "J'aime aider les autres, mais je ne veux pas être en charge de leur réussite": [1, 1, 3, 2]
+            "J'aime aider les autres, mais je ne veux pas être en charge de leur réussite": [0, 0, 1, 1]
         },
         {
-            "J'aime aider les autres et je veux être en charge de leur réussite !": [2, 3, 2, 3]
+            "J'aime aider les autres et je veux être en charge de leur réussite !": [0, 1, 0, 1]
         },
     ],
     "Êtes-vous prêt à prendre des risques pour atteindre vos objectifs ?": [{
-        "Oui": [3, 2, 0, 1]
+        "Oui": [1, 1, 0, 0]
     },
     {
-        "Non": [1, 0, 2, 3]
+        "Non": [0, 0, 0, 0]
     },
     {
-        "Ça dépend": [2, 3, 1, 0]
+        "Ça dépend": [1, 0, 1, 0]
     }
     ],
     "Avez-vous tendance à prendre des décisions rapides ou à réfléchir longuement avant de prendre une décision ?": [{
-            "Je prends des décisions rapides": [3, 1, 2, 0]
+            "Je prends des décisions rapides": [1, 0, 0, 0]
         },
         {
-            "Je réfléchis longuement avant de prendre une décision": [0, 2, 1, 3]
+            "Je réfléchis longuement avant de prendre une décision": [0, 0, 2, 0]
         },
         {
-            "Ça dépend de la situation": [2, 3, 0, 1]
+            "Ça dépend de la situation": [0, 0, 1, 0]
         }
     ],
     "Avez-vous tendance à être honnête, même si cela signifie être impopulaire ?": [{
-            "Oui": [3, 2, 1, 0]
+            "Oui": [1, 0, 1, 2]
         },
         {
-            "Non": [0, 1, 2, 3]
+            "Non": [0, 0, 0, 0]
         },
         {
-            "Ça dépend": [2, 1, 3, 0]
+            "Ça dépend": [0, 0, 0, 1]
         }
     ],
-    "Êtes-vous une personne plutôt introvertie ou extravertie ?": [{
-            "Introverti": [1, 2, 0, 3]
+    "Avez-vous des facilités à rester serein(e), même lorsque certaines situation sont stressantes ?": [{
+            "Je panique facilement": [0, 0, 0, 0]
         },
         {
-            "Extraverti": [3, 0, 2, 1]
+            "Je gère plutôt bien la pression": [1, 0, 0, 0]
         },
         {
-            "Un mélange des deux": [2, 1, 3, 0]
+            "Je suis souvent celui/celle qui prends les décisions dans des moments pressants": [2, 0, 0, 0]
         }
     ],
-    "Préférez-vous travailler seul ou en équipe ?": [{
-            "Seul": [1, 0, 3, 2]
+    "Vous sentez-vous supérieur(e) aux autres ?": [{
+            "Oui, dans les domaines que je maîtrise bien": [0, 1, 1, 0]
         },
         {
-            "En équipe": [2, 3, 1, 0]
+            "Non, au contraire je me sens souvent surpassé(e)": [0, 0, 0, 0]
         },
         {
-            "Ça dépend de la tâche à accomplir": [3, 1, 2, 0]
+            "Oui, globalement": [0, 2, 0, 0]
         }
     ]
 }
@@ -233,7 +227,7 @@ window.onload = displayQuestion;
 buttons.forEach((button, index) => {
     button.addEventListener("click", () => {
         const answer = Object.values(questions)[currentQuestion][index];
-        console.log(answer);
+        console.log(answer, "1");
 
         tosend = tosend.map((value, idx) => value + answer[Object.keys(answer)[0]][idx]);
 
@@ -241,15 +235,15 @@ buttons.forEach((button, index) => {
         if (currentQuestion < Object.keys(questions).length) {
             displayQuestion();
         } else {
-            console.log(tosend);
-            let result = execution({
+            console.log(tosend, "2");
+            let final_result = execution({
                 'Courage': tosend[0],
                 'Ambition': tosend[1],
                 'Intelligence': tosend[2],
                 'Good': tosend[3]
             });
-            console.log(result);
-            alert(`Vous êtes de le maison ${result[0]} !`);
+            console.log(final_result);
+            alert(`Vous êtes de le maison ${final_result[0]} !`);
         }
     });
 });
