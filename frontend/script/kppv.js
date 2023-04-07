@@ -96,11 +96,17 @@ function results_creation(tab) {
     for (let i = 0; i < tab.length; i++) {
         results[tab[i]['Name']] = tab[i]['House'];
     }
+    console.log(results)
     return results;
 }
+function refresh() {
+    window.location.reload();
+}
+
+
 
 let currentQuestion = 0;
-let tosend = [1, 1, 1, 1];
+let tosend = [4, 4, 4, 4];
 let questions = {
     "Êtes-vous plutôt du genre à prendre des risques ou à éviter les situations risquées ?": [{
             "Je suis plutôt prudent(e)": [0, 0, 1, 0]
@@ -235,14 +241,12 @@ buttons.forEach((button, index) => {
         if (currentQuestion < Object.keys(questions).length) {
             displayQuestion();
         } else {
-            console.log(tosend, "2");
             let final_result = execution({
                 'Courage': tosend[0],
                 'Ambition': tosend[1],
                 'Intelligence': tosend[2],
                 'Good': tosend[3]
             });
-            console.log(final_result);
             alert(`Vous êtes de le maison ${final_result[0]} !`);
         }
     });

@@ -38,6 +38,21 @@ body {
 }
 
 
+
+.refresh-button-container {
+  position: absolute;
+  max-width: 20em;
+  max-height: 5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.refresh-button {
+  max-width: 20em;
+  max-height: 5em;
+  background-color: #6F5643;
+  border-radius: 3px;
+}
 .traces {
   position:relative;
   float:right;
